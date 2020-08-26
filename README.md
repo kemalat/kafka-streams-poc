@@ -81,15 +81,13 @@ $ mvn clean package
 
 Run an example application using the the standalone jar.
 ```
-$ java -cp target/kafka-streams-examples-5.5.0-standalone.jar \
-  -Dlog4j.configuration=file:src/main/resources/log4j.properties \
-  io.confluent.examples.streams.WordCountLambdaExample
+$ ./transform.sh start
 ```
 
-Write some input data to the source topic by running data producer `SumLambdaExampleDriver`. The running example application will automatically process this input data and write the results to the output topic.
+Write some input data to the source topic by running data driver  `SumLambdaExampleDriver`. The running example application will automatically process this input data and write the results to the output topic.
 
 ```
-$ java -cp target/kafka-streams-examples-5.5.0-standalone.jar io.confluent.examples.streams.SumLambdaExampleDriver
+$ ./driver.sh start
 ```
 
 Inspect the results data in the output topic using `kafka-console-consumer`
@@ -97,4 +95,9 @@ Inspect the results data in the output topic using `kafka-console-consumer`
 $ bin/kafka-console-consumer --topic sum-of-odd-numbers-topic --from-beginning \
                               --bootstrap-server localhost:9092 \
                               --property value.deserializer=org.apache.kafka.common.serialization.IntegerDeserializer
+```
+Stop application and driver 
+```
+$ ./transform.sh stop
+$ ./driver.sh stop
 ```
