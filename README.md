@@ -1,4 +1,4 @@
-# Data stream analyitcs proof of concept using Kafka Streams
+# Data stream analytics proof of concept using Kafka Streams
 
 ## Stream
 
